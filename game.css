@@ -1,0 +1,15 @@
+html, body, canvas {
+    margin: 0;
+    padding:0;
+}
+canvas {
+    background: lightgray;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+}
+#addBot {
+    position: absolute;
+    top: 0;
+
+}

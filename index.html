@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script src="app.js" type="application/javascript"></script>
+    <link href="game.css" type="text/css">
+</head>
+<body>
+<canvas id="board" width=1440 height=768>
+</canvas>
+
+<input id="addBot" type="button" value="Add Bot">
+
+<script type="application/javascript">
+    var e = new Engine({
+        gameBoard: document.getElementById('board'),
+        showFps: true
+    });
+
+    document.getElementById('addBot').addEventListener('click', function(e) {
+        e.arena.addBot(new Bot({
+            id: "test0",
+            x: Math.random() * 100,
+            y: Math.random() * 100
+        }));
+    })
+
+    e.arena.addBot(new Bot({
+        id: "test0",
+        x: Math.random() * 100,
+        y: Math.random() * 100
+    }));
+
+</script>
+
+</body>
+</html>
