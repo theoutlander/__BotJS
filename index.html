@@ -18,7 +18,7 @@
 <script type="application/javascript">
     var engine = new Engine({
         gameBoard: document.getElementById('board'),
-        showFps: true
+        showFps: false
     });
 
     var count = 0;
@@ -28,15 +28,15 @@
             id: "bot: " + count++,
             //x: Math.random() * 100,
             //y: Math.random() * 100,
-            x: 100,
-            y: 100,
+            x: 0,
+            y: 0,
             angle: Math.random() * 0
         }))
                 .move(300)
                 .turn(45)
-                //.move(200)
-                //.turn(45)
-                //.move(200)
+                .move(200)
+                .turn(45)
+                .move(200)
                 //.turn(45)
                 //.move(300)
     });

@@ -24,12 +24,12 @@ Engine.prototype = {
         return fps;
     },
 
-    animate: function (time) {
-        if (time === undefined) {
-            time = (+new Date());
-        }
+    animate: function () {
+        //if (time === undefined) {
+        //    time = (+new Date());
+        //}
 
-        if (!paused) {
+        if (!this.paused) {
             this.arena.render();
 
             if (this.showFps) {
@@ -51,11 +51,11 @@ Engine.prototype = {
     },
 
     run: function () {
-        paused = false;
+        this.paused = false;
         this.animationId = requestAnimationFrame(this.animate.bind(this));
     },
 
     pause: function() {
-        paused = true;
+        this.paused = true;
     }
 };

@@ -25,9 +25,6 @@ Bot.prototype = {
     },
 
     updateTimeBased: function (ctx, time) {
-	    ctx.translate(this.translateX, this.translateY);
-	    ctx.rotate((Math.PI / 180) * this.angle);
-
 	    if(this.instructions.length > 0) {
 		    var elapsedTime = time - this.lastTime;
 
@@ -42,12 +39,26 @@ Bot.prototype = {
 			    if (command.move <= 0) {
 				    this.instructions.shift();
 			    }
+
+			    ctx.translate(this.translateX, this.translateY);
+			    ctx.rotate((Math.PI / 180) * this.angle);
+
+			    ctx.fillStyle = 'green';
+			    ctx.fillRect(this.x, this.y, this.width, this.height);
+
+			    ctx.fillStyle = 'yellow';
+			    ctx.font = '12pt Arial';
+			    ctx.strokeStyle = 'red';
+
+			    ctx.fillText(this.id, this.x, this.y + 20);
+
+			    //this.ctx.strokeText('BotJS', (board.width / 2) - 50, board.height / 2 + 15);
 		    }
 		    else if(command.turn)
 		    {
 			    this.angle += command.turn;
 
-			    this.translateX += this.x;
+			    this.translateX = this.x;
 
 			    if(command.turn < 90)
 			    {
@@ -62,8 +73,13 @@ Bot.prototype = {
 			    }
 
 			    this.x = this.y = 0; // reset both axis to the upper left of the translated canvas
-			    ctx.translate(this.translateX, this.translateY);
-			    ctx.rotate((Math.PI / 180) * this.angle);
+
+			    //ctx.translate(this.translateX, this.translateY);
+			    //console.log("translateX: " + this.translateX + " translateY: " + this.translateY);
+
+			    //ctx.rotate((Math.PI / 180) * command.turn);
+			    //console.log("rotating to: " + command.turn);
+
 			    this.instructions.shift();
 		    }
 
@@ -73,7 +89,7 @@ Bot.prototype = {
 
     render: function (ctx) {
         this.updateTimeBased(ctx, Date.now());
-
+/*
 	    ctx.fillStyle = 'green';
 	    ctx.fillRect(this.x, this.y, this.width, this.height);
 
@@ -84,5 +100,6 @@ Bot.prototype = {
 	    ctx.fillText(this.id, this.x, this.y + 20);
 
 	    //this.ctx.strokeText('BotJS', (board.width / 2) - 50, board.height / 2 + 15);
+	    */
     }
 };
