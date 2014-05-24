@@ -6,6 +6,7 @@ var Arena = function (ctx) {
 Arena.prototype = {
     addBot: function (bot) {
         this.Bots.push(bot);
+	    return bot;
     },
 
     renderBackground: function () {
@@ -17,11 +18,16 @@ Arena.prototype = {
     },
 
     render: function () {
-        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        //this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+	    this.renderBackground();
 
-        for (var bot in this.Bots) {
+	    for (var bot in this.Bots) {
             //console.log(this.Bots[bot].id + ", " + this.Bots[bot].rotate);
-            this.Bots[bot].move(this.ctx);
+            //this.Bots[bot].move(this.ctx);
+
+		    this.ctx.save();
+		    this.Bots[bot].render(this.ctx);
+		    this.ctx.restore();
         }
     }
 };

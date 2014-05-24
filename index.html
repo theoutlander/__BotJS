@@ -1,33 +1,58 @@
 <html>
 <head>
     <script src="app.js" type="application/javascript"></script>
-    <link href="game.css" type="text/css">
+    <link rel="stylesheet" href="game.css" type="text/css" />
 </head>
 <body>
+
 <canvas id="board" width=1440 height=768>
 </canvas>
 
-<input id="addBot" type="button" value="Add Bot">
+<menu>
+<ul>
+<li><input id="addBot" type="button" value="Add Bot"></li>
+<li><input id="run" type="button" value="Run"></li>
+</ul>
+    </menu>
 
 <script type="application/javascript">
-    var e = new Engine({
+    var engine = new Engine({
         gameBoard: document.getElementById('board'),
         showFps: true
     });
 
-    document.getElementById('addBot').addEventListener('click', function(e) {
-        e.arena.addBot(new Bot({
-            id: "test0",
-            x: Math.random() * 100,
-            y: Math.random() * 100
-        }));
-    })
+    var count = 0;
 
-    e.arena.addBot(new Bot({
-        id: "test0",
-        x: Math.random() * 100,
-        y: Math.random() * 100
-    }));
+    document.getElementById('addBot').addEventListener('click', function() {
+        engine.arena.addBot(new Bot({
+            id: "bot: " + count++,
+            //x: Math.random() * 100,
+            //y: Math.random() * 100,
+            x: 100,
+            y: 100,
+            angle: Math.random() * 0
+        }))
+                .move(300)
+                .turn(45)
+                //.move(200)
+                //.turn(45)
+                //.move(200)
+                //.turn(45)
+                //.move(300)
+    });
+
+    document.getElementById('run').addEventListener('click', function(e) {
+       if(e.target.value == 'Run')
+       {
+           e.target.value = "Pause";
+           engine.run();
+       }
+       else
+       {
+           e.target.value = "Run";
+           engine.pause();
+       }
+    });
 
 </script>
 

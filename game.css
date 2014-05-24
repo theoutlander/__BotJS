@@ -8,8 +8,12 @@ canvas {
     bottom: 0;
     position: absolute;
 }
-#addBot {
-    position: absolute;
-    top: 0;
-
+ul {
+	position: absolute;
+	top: 0;
+	left: 200;
+	list-style-type: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }

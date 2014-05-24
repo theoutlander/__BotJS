@@ -53,5 +53,9 @@ Engine.prototype = {
     run: function () {
         paused = false;
         this.animationId = requestAnimationFrame(this.animate.bind(this));
+    },
+
+    pause: function() {
+        paused = true;
     }
 };
