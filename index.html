@@ -1,20 +1,21 @@
 <html>
 <head>
-    <script src="app.js" type="application/javascript"></script>
-    <link rel="stylesheet" href="game.css" type="text/css" />
+    <link rel="stylesheet" href="game.css" type="text/css"/>
 </head>
 <body>
 
 <canvas id="board" width=1440 height=768>
 </canvas>
 
-<menu>
-<ul>
-<li><input id="addBot" type="button" value="Add Bot"></li>
-<li><input id="run" type="button" value="Run"></li>
-</ul>
-    </menu>
+<menu id="menu">
+    <ul>
+        <li><input id="addBot" type="button" value="Add Bot"></li>
+        <li><input id="run" type="button" value="Run"></li>
+    </ul>
+</menu>
 
+<script data-main="app.js" src='http://requirejs.org/docs/release/2.1.11/minified/require.js'></script>
+<!--
 <script type="application/javascript">
     var engine = new Engine({
         gameBoard: document.getElementById('board'),
@@ -55,6 +56,6 @@
     });
 
 </script>
-
+-->
 </body>
 </html>

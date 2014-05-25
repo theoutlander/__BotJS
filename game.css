@@ -2,8 +2,10 @@ html, body, canvas {
     margin: 0;
     padding:0;
 }
+#board {
+	background: lightgray;
+}
 canvas {
-    background: lightgray;
     top: 0;
     bottom: 0;
     position: absolute;

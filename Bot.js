@@ -1,105 +1,119 @@
-var Bot = function (options) {
-    this.id = options.id || "bot";
-    this.angle = options.angle || 0;
-    this.x = options.x || 0;
-    this.y = options.y || 0;
-    this.speed = 300;
-    this.lastTime = Date.now();
-	this.instructions = [];
-	this.width = 50;
-	this.height = 50;
-	this.translateX = 0;
-	this.translateY = 0;
-};
+define(function() {
+	var Bot = function (options) {
+		this.id = options.id || "bot";
+		this.angle = options.angle || 0;
+		this.x = options.x || 0;
+		this.y = options.y || 0;
+		this.speed = 300;
+		this.lastTime = Date.now();
+		this.instructions = [];
+		this.width = 50;
+		this.height = 50;
+		this.translateX = 0;
+		this.translateY = 0;
 
-Bot.prototype = {
+		this.canvas = document.createElement('canvas');
+		this.canvas.id = this.id;
+		this.canvas.width = 1440;
+		this.canvas.height = 768;
+		this.ctx = this.canvas.getContext('2d');
+	};
 
-    move: function (distance) {
-        this.instructions.push({move: distance});
-	    return this;
-    },
+	Bot.prototype = {
 
-    turn: function (angle) {
-	    this.instructions.push({turn: angle});
-	    return this;
-    },
+		getCanvas: function() {
+			return this.canvas;
+		},
 
-    updateTimeBased: function (ctx, time) {
-	    if(this.instructions.length > 0) {
-		    var elapsedTime = time - this.lastTime;
+		move: function (distance) {
+			this.instructions.push({move: distance});
+			return this;
+		},
 
-		    var command = this.instructions[0];
+		turn: function (angle) {
+			this.instructions.push({turn: angle});
+			return this;
+		},
 
-		    if(command.move) {
-			    var distance = this.speed * (elapsedTime / 1000);
+		updateTimeBased: function (ctx, time) {
+			if (this.instructions.length > 0) {
+				var elapsedTime = time - this.lastTime;
 
-			    command.move -= distance;
-			    this.x += distance;
+				var command = this.instructions[0];
 
-			    if (command.move <= 0) {
-				    this.instructions.shift();
-			    }
+				if (command.move) {
+					var distance = this.speed * (elapsedTime / 1000);
 
-			    ctx.translate(this.translateX, this.translateY);
-			    ctx.rotate((Math.PI / 180) * this.angle);
+					command.move -= distance;
+					this.x += distance;
 
-			    ctx.fillStyle = 'green';
-			    ctx.fillRect(this.x, this.y, this.width, this.height);
+					if (command.move <= 0) {
+						this.instructions.shift();
+					}
 
-			    ctx.fillStyle = 'yellow';
-			    ctx.font = '12pt Arial';
-			    ctx.strokeStyle = 'red';
+					//ctx.translate(this.translateX, this.translateY);
+					//ctx.rotate((Math.PI / 180) * this.angle);
 
-			    ctx.fillText(this.id, this.x, this.y + 20);
+					ctx.fillStyle = 'green';
+					ctx.fillRect(this.x, this.y, this.width, this.height);
 
-			    //this.ctx.strokeText('BotJS', (board.width / 2) - 50, board.height / 2 + 15);
-		    }
-		    else if(command.turn)
-		    {
-			    this.angle += command.turn;
+					ctx.fillStyle = 'yellow';
+					ctx.font = '12pt Arial';
+					ctx.strokeStyle = 'red';
 
-			    this.translateX = this.x;
+					ctx.fillText(this.id, this.x, this.y + 20);
 
-			    if(command.turn < 90)
-			    {
-				    this.translateX += this.width;
-			    }
+					//this.ctx.strokeText('BotJS', (board.width / 2) - 50, board.height / 2 + 15);
+				}
+				else if (command.turn) {
+					this.angle += command.turn;
 
-			    this.translateY += this.y;
+					this.translateX = this.x;
 
-			    if(command.turn >= 90)
-			    {
-				    this.translateY += this.height;
-			    }
+					if (command.turn < 90) {
+						this.translateX += this.width;
+					}
 
-			    this.x = this.y = 0; // reset both axis to the upper left of the translated canvas
+					this.translateY += this.y;
 
-			    //ctx.translate(this.translateX, this.translateY);
-			    //console.log("translateX: " + this.translateX + " translateY: " + this.translateY);
+					if (command.turn >= 90) {
+						this.translateX += this.height;
+					}
 
-			    //ctx.rotate((Math.PI / 180) * command.turn);
-			    //console.log("rotating to: " + command.turn);
+					this.x = this.y = 0; // reset both axis to the upper left of the translated canvas
 
-			    this.instructions.shift();
-		    }
+					ctx.translate(this.translateX, this.translateY);
+					//console.log("translateX: " + this.translateX + " translateY: " + this.translateY);
 
-		    this.lastTime = time;
-	    }
-    },
+					ctx.rotate((Math.PI / 180) * command.turn);
+					//console.log("rotating to: " + command.turn);
 
-    render: function (ctx) {
-        this.updateTimeBased(ctx, Date.now());
-/*
-	    ctx.fillStyle = 'green';
-	    ctx.fillRect(this.x, this.y, this.width, this.height);
+					this.instructions.shift();
+				}
 
-	    ctx.fillStyle = 'yellow';
-	    ctx.font = '12pt Arial';
-	    ctx.strokeStyle = 'red';
+				this.lastTime = time;
+			}
+		},
 
-	    ctx.fillText(this.id, this.x, this.y + 20);
+		render: function () {
+			this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+			this.updateTimeBased(this.ctx, Date.now());
+			/*
+			 ctx.fillStyle = 'green';
+			 ctx.fillRect(this.x, this.y, this.width, this.height);
 
-	    //this.ctx.strokeText('BotJS', (board.width / 2) - 50, board.height / 2 + 15);
-	    */
-    }
-};
+			 ctx.fillStyle = 'yellow';
+			 ctx.font = '12pt Arial';
+			 ctx.strokeStyle = 'red';
+
+			 ctx.fillText(this.id, this.x, this.y + 20);
+
+			 //this.ctx.strokeText('BotJS', (board.width / 2) - 50, board.height / 2 + 15);
+			 */
+		}
+	};
+
+	return {
+		Bot: Bot
+	}
+});
