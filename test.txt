@@ -1,0 +1,11 @@
+require(['SAT'], function(obj) { window.obj = obj; })
+
+SAT = new obj.SAT();
+
+a = new obj.POLYGON(4, [obj.v(0,0),obj.v(0,3),obj.v(3,3),obj.v(3,0)])
+b = new obj.POLYGON(4, [obj.v(4,4),obj.v(4,6),obj.v(6,6),obj.v(6,4)]);
+SAT.checkCollision(a, b)
+
+c = new obj.POLYGON(4, [obj.v(0,0),obj.v(0,5),obj.v(5,4),obj.v(3,0)]);  
+d = new obj.POLYGON(4, [obj.v(4,4),obj.v(4,6),obj.v(6,6),obj.v(6,4)]);
+SAT.checkCollision(c, d)
