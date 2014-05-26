@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4122f258-2a14-4c71-978d-25ead2279f53" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SAT.js" />
-      <change type="MOVED" beforePath="C:\sd\Github\BotJS\app.js" afterPath="$PROJECT_DIR$/APP.JS" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Arena.js" afterPath="$PROJECT_DIR$/Arena.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BotJS.iws" />
@@ -41,8 +38,8 @@
       <file leaf-file-name="SAT.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SAT.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.5880641" vertical-offset="1441" max-vertical-offset="3706">
-              <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.47598255" vertical-offset="1441" max-vertical-offset="3706">
+              <caret line="104" column="23" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -297,7 +294,11 @@
       <created>1401042632912</created>
       <updated>1401042632912</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="SAT&#10;">
+      <created>1401130663208</created>
+      <updated>1401130663208</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -341,7 +342,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Initial Commit&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit&#10;" />
+    <MESSAGE value="SAT&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="SAT&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -461,8 +463,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SAT.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5880641" vertical-offset="1441" max-vertical-offset="3706">
-          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.47598255" vertical-offset="1441" max-vertical-offset="3706">
+          <caret line="104" column="23" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
           <folding />
         </state>
       </provider>
