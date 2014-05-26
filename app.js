@@ -19,7 +19,7 @@ requirejs(['Engine', 'Bot'],
 
 		var engine = new EngineModule.Engine({
 			gameBoard: document.getElementById('board'),
-			showFps: false
+			showFps: true
 		});
 
 		var count = 0;
@@ -27,18 +27,21 @@ requirejs(['Engine', 'Bot'],
 		document.getElementById('addBot').addEventListener('click', function() {
 			var bot = new BotModule.Bot({
 				id: "bot: " + count++,
-				x: Math.random() * 100,
-				y: Math.random() * 100,
-				//x: 0,
-				//y: 0,
+				x: Math.random() * 450,
+				y: Math.random() * 250,
 				angle: Math.random() * 0
 			});
 
 			document.body.insertBefore(bot.getCanvas(), document.getElementById('menu'));
 
-			bot
-				.move(300)
-				.turn(45)
+			for(var i=0; i<360; i++)
+			{
+				bot.move(10).turn(45);
+			}
+
+			/*bot
+				.move(1)
+				.turn(1)
 				.move(200)
 				.turn(-45)
 				.move(200)
@@ -48,6 +51,7 @@ requirejs(['Engine', 'Bot'],
 				.move(300)
 				.turn(90)
 				.move(500)
+			*/
 
 			engine.arena.addBot(bot);
 		});

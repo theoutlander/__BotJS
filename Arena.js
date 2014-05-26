@@ -19,8 +19,8 @@ define(function() {
 		},
 
 		render: function () {
-			//this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-			//this.renderBackground();
+			this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+			this.renderBackground();
 
 			for (var bot in this.Bots) {
 				//console.log(this.Bots[bot].id + ", " + this.Bots[bot].rotate);
